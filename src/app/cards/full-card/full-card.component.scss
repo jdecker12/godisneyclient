@@ -1,0 +1,43 @@
+@import'../../_variables.scss';
+
+#main-content {
+    // margin: $gutters-main;
+    float: right;
+
+    h1 {
+        color: $d-dark;
+    }
+}
+
+#aside-container {
+    width: 350px;
+    // background-color: #673ab7;
+    padding: 0 1rem;
+    z-index: -1;
+}
+
+
+.go-dis-card {
+    margin-bottom: 2rem;
+    max-width: 710px;
+    border-bottom: 3px solid $d-dark;
+    border-radius: 3px;
+
+    .mat-card-header {
+        color: $d-dark;
+    }
+
+    .mat-card-content a {
+        color: $d-dark;
+        text-decoration: underline;
+    }
+
+    .mat-fab {
+        float: right;
+        top: -59px;
+        right: 3rem;
+        background-color: $d-light;
+        color: #000000;
+    }
+}
+

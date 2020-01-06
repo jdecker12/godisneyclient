@@ -1,0 +1,10 @@
+
+<div class="gdb-menu">
+    <button mat-button>Home</button>
+    <button mat-button>About Us</button>
+    <button mat-button [matMenuTriggerFor]="menu">Contact</button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>Item 1</button>
+        <button mat-menu-item>Item 2</button>
+    </mat-menu>
+</div>

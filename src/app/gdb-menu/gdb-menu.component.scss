@@ -1,0 +1,11 @@
+.gdb-menu {
+    .mat-button {
+        font-size: 1.25rem;
+    }
+}
+
+@media(max-width: '720px'){
+    .gdb-menu {
+        display: none;
+    }
+}
