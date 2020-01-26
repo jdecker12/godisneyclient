@@ -75,7 +75,7 @@ html, body {
             text-align: center !important;
             position: relative !important;
             top: 2rem;
-            margin: 0 0;
+            margin: 0 auto;
 
             .mat-card-subtitle {
                 color: #fff;
@@ -301,12 +301,25 @@ html, body {
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-@media(max-width: '720px') {
 
+
+////////// media queries ////////
+
+@media(max-width: '720px') {
+    #goofy-icon, .toolbar-font, .shield-icon {
+        display: none;
+    }
+    .sidebar-toggle, .gdb-hamburger  {
+        display: flex;
+        margin-left: 20%;
+    }
 }
+
+
+//iphone8+
 @media only screen 
-and (device-width : 375px) 
-and (device-height : 812px) 
+and (width : 375px) 
+and (height : 812px) 
 and (-webkit-device-pixel-ratio : 3) {
     #goofy-icon, .toolbar-font, .shield-icon {
         display: none;
@@ -316,4 +329,61 @@ and (-webkit-device-pixel-ratio : 3) {
         display: flex;
         margin-left: 20%;
     }
+    #aside-container {
+        width: 76%;
+    }
+    .sidebar-card .mat-card-header .mat-card-avatar {
+        position: relative;
+        height: 80px;
+        width: 80px;
+        z-index: 10;
+        top: 175px;
+        left: 320px;
+        border: 5px solid #fff;
+    }
+}
+    @media only screen 
+    and (min-width : 375px) 
+    and (max-width : 812px)
+    and (-webkit-pixel-ratio : 3) { 
+        #goofy-icon, .toolbar-font, .shield-icon {
+            display: none;
+        }
+    
+        .sidebar-toggle, .gdb-hamburger  {
+            display: flex;
+            margin-left: 20%;
+        }
+        #aside-container {
+            width: 76%;
+        }
+        .sidebar-card .mat-card-header .mat-card-avatar {
+            position: relative;
+            height: 80px;
+            width: 80px;
+            z-index: 10;
+            top: 175px;
+            left: 320px;
+            border: 5px solid #fff;
+        }
+    }
+
+    ///ipad
+    @media only screen 
+    and (min-width : 768px) 
+    and (max-width : 1024px)
+    and (-webkit-min-device-pixel-ratio: 1)  { 
+    #aside-container {
+        width: 76%;
+    }
+    .sidebar-card .mat-card-header .mat-card-avatar {
+        position: relative;
+        height: 80px;
+        width: 80px;
+        z-index: 10;
+        top: 175px;
+        left: 320px;
+        border: 5px solid #fff;
+    }
+    
  }

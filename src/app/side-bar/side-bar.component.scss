@@ -30,12 +30,12 @@
             background-image: url('../../assets/img/profile_img.png');
             background-size: cover;
             background-position: center;
-            position: relative;
+            position: absolute;
             height: 80px;
             width: 80px;
             z-index: 10;
             top: 175px;
-            left: 110px;
+            left: 37.5%;
             border: 5px solid #fff;
         }
 
@@ -44,6 +44,22 @@
             color: #fff !important;
             text-align: center !important;
             position: relative !important;
+            margin: 0 auto;
         }
     }
+}
+@media(max-width: '1024px') {
+    .mat-card-header-text {
+        margin: 0 auto;
+    }
+        .sidebar-card .mat-card-header .mat-card-avatar {
+            position: absolute;
+            height: 80px;
+            width: 80px;
+            z-index: 10;
+            top: 175px;
+            left: 43%;
+            border: 5px solid #fff;
+        }
+
 }

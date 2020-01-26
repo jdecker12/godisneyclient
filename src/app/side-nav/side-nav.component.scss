@@ -181,12 +181,47 @@ div#main-content {
     #aside-container {
         width: 100%;
     }
+    #main-wrapper {
+        width: 100%;
+    }
+}
+
+@media(max-width: '1024px') {
+    #main-wrapper {
+        width: 79%;
+    }
+    #aside-container {
+        width: 79%;
+        .sidebar-card .mat-card-header .mat-card-avatar {
+            position: relative;
+            height: 80px;
+            width: 80px;
+            z-index: 10;
+            top: 175px;
+            left: 320px;
+            border: 5px solid #fff;
+        }
+    }
+
+}
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px) { 
+    #main-wrapper {
+        width: 100%;
+    }
+    #aside-container {
+        width: 100%;
+    }
 }
 
 @media only screen 
 and (device-width : 375px) 
 and (device-height : 812px) 
 and (-webkit-device-pixel-ratio : 3) {
+    #main-wrapper {
+        width: 100%;
+    }
     #aside-container {
         width: 100%;
     }
