@@ -1,0 +1,14 @@
+.img-list {
+    position: relative;
+    display: flex;
+    flex-flow: row wrap;
+    margin-bottom: 5rem;
+    width: 95%;
+    ul {
+        list-style-type: none;
+        li {
+         font-size: .75rem;
+         margin-right: .5rem;
+        }
+    }
+}

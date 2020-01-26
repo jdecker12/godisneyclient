@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "../../GoDisneyBlog2/GoDisneyBlog2/wwwroot",
+            "outputPath": "../../godisneybackend/GoDisneyBlog2/wwwroot",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",

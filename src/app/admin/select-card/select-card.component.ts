@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { DataService } from '../../services/data.service';
 import { Card} from '../../models/card';
 import { FormControl, Validators, FormGroup} from '@angular/forms';
 import { Router } from '@angular/router';
+import { subscribeOn } from 'rxjs/operators';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class SelectCardComponent implements OnInit {
     cardLink: any;
-    
+    public images: {} = [];
     constructor(private data: DataService, private router: Router) { }
     public cards: Card[] = [];
     public card: Card;
@@ -42,6 +43,13 @@ export class SelectCardComponent implements OnInit {
         if (this.data.loginRequired) {
             this.router.navigate(['/login']);
         }
+        this.data.getImageList()
+        .subscribe((success) => {
+            if(success) {
+                this.images = success;
+            }
+        });
+
         this.card = new Card();
         this.data.loadCards()
             .subscribe(success => {

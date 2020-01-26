@@ -1,4 +1,5 @@
 import { Component, NgZone, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import { DataService } from '../services/data.service';
 import { Router } from '@angular/router';
 import { Card } from '../models/card';
@@ -16,13 +17,17 @@ export class SideNavComponent implements OnInit {
     cardData: Card[];
 
     private mediaMatcher: MediaQueryList = matchMedia(`(max-width: ${SMALL_WIDTH_BREAKPOINT}px`);
-    private iphoneMediaMatcher: MediaQueryList = matchMedia(`(only screen and(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio : 3)`);
+    private iphoneMediaMatcher: MediaQueryList = matchMedia(`(min-device-width : 375px) 
+    and (max-device-width : 667px)`);
+        
 
-    constructor(zone: NgZone, private data: DataService, private router: Router) {
+    constructor(private zone: NgZone, private breakpointObserver: BreakpointObserver, private data: DataService, private router: Router) {
         this.mediaMatcher.addListener(mql => 
             zone.run(() => this.mediaMatcher = matchMedia(`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`)));
+
         this.iphoneMediaMatcher.addListener(mql => 
-            zone.run(() => this.iphoneMediaMatcher = matchMedia(`(only screen and(device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio : 3)`)));
+            zone.run(() => this.iphoneMediaMatcher = matchMedia(`(min-device-width : 375px) 
+            and (max-device-width : 667px)`)));
     }
 
     ngOnInit() {
@@ -40,6 +45,7 @@ export class SideNavComponent implements OnInit {
     navTrue: boolean;
 
     isScreenSmall(): boolean {
+        //console.log(this.mediaMatcher.matches);
        if(this.iphoneMediaMatcher.matches == true || this.mediaMatcher.matches == true) {
         this.navTrue = false;
         return true;

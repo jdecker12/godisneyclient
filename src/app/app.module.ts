@@ -27,6 +27,7 @@ import { LoginComponent } from './login/login.component';
 import { SelectCardComponent } from './admin/select-card/select-card.component';
 import { NewsFeedComponent } from './news-feed/news-feed.component';
 import { BtmSheetComponent, BottomSheetOverviewExampleSheet } from './btm-sheet/btm-sheet.component';
+import { ImageModalComponent, DialogOverviewExampleDialog } from './image-modal/image-modal.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,9 @@ import { BtmSheetComponent, BottomSheetOverviewExampleSheet } from './btm-sheet/
     SelectCardComponent,
     NewsFeedComponent,
     BtmSheetComponent,
-    BottomSheetOverviewExampleSheet
+    BottomSheetOverviewExampleSheet,
+    ImageModalComponent,
+    DialogOverviewExampleDialog
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,7 @@ import { BtmSheetComponent, BottomSheetOverviewExampleSheet } from './btm-sheet/
     //RouterModule.forRoot(routes, {useHash: true})
   ],
   providers: [DataService],
-  entryComponents: [BtmSheetComponent, BottomSheetOverviewExampleSheet],
+  entryComponents: [BtmSheetComponent, BottomSheetOverviewExampleSheet, DialogOverviewExampleDialog],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

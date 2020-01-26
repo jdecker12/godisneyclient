@@ -20,6 +20,7 @@ export class DataService {
     public cardContents: CardContent[] = [];
 
     private userKey: UserKey;
+    public imgArr: {} = [];
 
     public  httpOptions = {
         headers: new HttpHeaders({
@@ -29,7 +30,7 @@ export class DataService {
     };
 
     loadCards(): any {
-        return this.http.get("/api/cards/GetAllCards")
+        return this.http.get("http://localhost:5000/api/cards/GetAllCards")
             .pipe(
             map((data:any[]) => {
                 this.cards = data;
@@ -38,7 +39,16 @@ export class DataService {
     }
 
     loadCardsByCategory(cat: string): any {
-        return this.http.get("/api/cards/GetByCategory/" + cat)
+        return this.http.get("http://localhost:5000/api/cards/GetByCategory/" + cat)
+            .pipe(
+                map((data: any[]) => {
+                    this.cards = data;
+                    return this.cards;
+                }));
+    }
+
+    loadCardLinks(cat: string): any {
+        return this.http.get("http://localhost:5000/api/cards/GetCardsLinkData/" + cat)
             .pipe(
                 map((data: any[]) => {
                     this.cards = data;
@@ -51,7 +61,7 @@ export class DataService {
     }
 
     getMyCardById(id: number): Observable<boolean> {
-        return this.http.get("/api/cards/GetCardById/" + id)
+        return this.http.get("http://localhost:5000/api/cards/GetCardById/" + id)
             .pipe(
             map((data: any) => {
                 this.card = data;
@@ -60,7 +70,7 @@ export class DataService {
     }
 
     getCardByName(name): Observable<boolean> {
-       return this.http.get("/api/cards/GetCardByName/" + name)
+       return this.http.get("http://localhost:5000/api/cards/GetCardByName/" + name)
             .pipe(
             map((data: any) => {
                 this.card = data;
@@ -73,7 +83,7 @@ export class DataService {
     }
 
     public login(creds): Observable<boolean> {
-        return this.http.post("/api/Auth/CreateToken", creds)
+        return this.http.post("http://localhost:5000/api/Auth/CreateToken", creds)
             .pipe(
                 map((data: any) => {
                 this.token = data.token;
@@ -83,7 +93,7 @@ export class DataService {
     }
 
     public saveUserKey(key): Observable<boolean> {
-        return this.http.post("/api/Auth/StoreKey", key, {
+        return this.http.post("http://localhost:5000/api/Auth/StoreKey", key, {
             headers: new HttpHeaders().set('Content-Type','application/json')
         })
             .pipe(
@@ -96,7 +106,7 @@ export class DataService {
     } 
 
     public updateCard(name:string, data) {
-        return this.http.put("/api/cards/"+ name, data, {
+        return this.http.put("http://localhost:5000/api/cards/"+ name, data, {
             headers: new HttpHeaders().set("Authorization", "Bearer " + this.token)
         }).pipe(
             map((response) => {
@@ -107,7 +117,7 @@ export class DataService {
 
     public checkout() {
        
-        return this.http.post("/api/orders", this.card, {
+        return this.http.post("http://localhost:5000/api/orders", this.card, {
             headers: new HttpHeaders().set("Authorization", "Bearer " + this.token)
         })
             .pipe(
@@ -118,7 +128,7 @@ export class DataService {
     }
 
     public admin(data): Observable<boolean> {
-        return this.http.post("/api/cards", data, {
+        return this.http.post("http://localhost:5000/api/cards", data, {
             headers: new HttpHeaders().set("Authorization", "Bearer " + this.token)
         })
          .pipe(
@@ -129,7 +139,7 @@ export class DataService {
     }
 
     public deleteCard(name:string) {
-        return this.http.delete("/api/cards/"+ name, {
+        return this.http.delete("http://localhost:5000/api/cards/"+ name, {
             headers: new HttpHeaders().set("Authorization", "Bearer " + this.token)
         })
             .pipe(
@@ -138,6 +148,19 @@ export class DataService {
                 return true;
                 })
             );
+    }
+
+    getImageList() : Observable<object> {
+        return this.http.get("http://localhost:5000/api/Cards/GetAllImages/",{
+            headers: new HttpHeaders().set("Authorization", "Bearer " + this.token)
+        })
+        .pipe(
+            map((response) => {
+                this.imgArr = response;
+                console.log(this.imgArr);
+                return this.imgArr;
+            })
+        )
     }
 
     
