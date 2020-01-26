@@ -32,36 +32,6 @@
 }
 .mat-sidenav-content {
     &:before {
-        /*position: absolute;
-        background-image: url(/img/sunburst4-Lgray-gdb.png);
-        background-size: 339px;
-        content: ' ';
-        opacity: .45;
-        width: 100%;
-        height: 298px;
-        top: 342px;*/
-        /* right: 30px; */
-        // z-index: -1;
-        /*position: absolute;
-        background-image: url(/img/sunburst4-Lgray-gdb.png);
-        background-size: 568px;
-        content: ' ';
-        opacity: .45;
-        width: 100%;
-        height: 290px;
-        top: 293px;
-        /* right: 30px; */
-
-        /*position: absolute;
-        background-image: url(/img/sunburst4-Lgray-gdb.png);
-        background-size: 568px;
-        content: ' ';
-        opacity: .25;
-        width: 100%;
-        height: 290px;
-        top: 338px;
-        z-index: -1;*/
-        ///last
         position: absolute;
         background-image: url(../../assets/img/sunburst4-Lgray-gdb.png);
         background-size: 568px;
@@ -174,7 +144,7 @@
 div#main-content {
     min-height: 500px;
     padding: 70px 0;
-  
+    //min-width: 800px;
 }
 
 @media(max-width: '720px') {
