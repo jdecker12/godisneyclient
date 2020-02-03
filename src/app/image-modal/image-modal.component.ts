@@ -1,7 +1,9 @@
-import { Component, OnInit, Inject, Input } from '@angular/core';
+import { Component, OnInit, Inject, Input, Output, EventEmitter } from '@angular/core';
+import {FormControl} from '@angular/forms';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+
 export interface Images {
-  images
+  images: string;
 }
 @Component({
   selector: 'app-image-modal',
@@ -10,19 +12,44 @@ export interface Images {
 })
 export class ImageModalComponent implements OnInit {
  
-  @Input() images: {} = [];
+  @Input() images = [];
+  @Output() selectImg = new EventEmitter<string>()
+ 
   constructor(public dialog: MatDialog) {}
+  myselect = new FormControl();
+  img: string;
+  selectedImg: string;
+
+  getSelValue() : string {
+    this.selectedImg = this.myselect.value;
+    return this.selectedImg;
+  }
+
+
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '50%',
-      data: this.images
-    });
+    this.getSelValue();
+   const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+    width: '50%',
+    data: this.selectedImg
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    let nameArr = Array.from(this.selectedImg);
+    let count = nameArr.indexOf('.');
+    let truncName = nameArr.splice(0, count);
+    let imgName = truncName.join("");
+  
+    console.log(imgName);
+    this.selectImg.emit(imgName);
+    
+  });
+
   }
 
 
   ngOnInit() {
-    console.log(this.images);
+   console.log(this.images);
   }
 
 }
@@ -33,13 +60,14 @@ export class ImageModalComponent implements OnInit {
   templateUrl: 'dialog-overview-example-dialog.html',
 })
 export class DialogOverviewExampleDialog {
-
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: Images) {}
 
+
+
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close(this.data);
   }
 
 }

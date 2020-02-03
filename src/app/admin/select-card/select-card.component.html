@@ -23,13 +23,6 @@
                     </mat-radio-group>
                 </div>
 
-                <div class="example-container">
-                    <button mat-stroked-button type="link"><a href="https://material.io/resources/icons/?style=baseline" target="_blank">Material Icons</a></button>
-                </div>
-                <br>
-            
-
-
                 <div *ngIf="isChecked == 'update' || isChecked == 'delete'">
                     <h3>Select a Card to Update</h3>
                     <div class="card-list">
@@ -109,10 +102,16 @@
                 </div>
             </mat-card-content>
                 <mat-card-actions>
-                    <button class="a-button" mat-button mat-raised-button type="submit">Submit</button>
+                    <button class="a-button" [disabled]="updateCardForm.invalid" mat-button mat-raised-button type="submit">Submit</button>
                     <button mat-button mat-raised-button (click)="cancel()">Cancel</button>
                 </mat-card-actions>
             </form>
+            <hr>
+            <h3>Helper Section</h3>
+            <div class="example-container ">
+                <button mat-stroked-button type="button"><a href="https://material.io/resources/icons/?style=baseline" target="_blank">Material Icons</a></button>
+            </div>
+            <br>
             <h3>Available Images</h3>
-            <app-image-modal [images]="images"></app-image-modal>
+            <app-image-modal [images]="images" (selectImg)="onSelected($event)"></app-image-modal>
 </mat-card>

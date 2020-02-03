@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, Router, Scroll } from '@angular/router';
 import { CardComponent } from './cards/card/card.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { LoginComponent } from './login/login.component';
 import { SelectCardComponent } from './admin/select-card/select-card.component';
 import { FullCardComponent } from './cards/full-card/full-card.component';
+import { ViewportScroller } from '@angular/common';
+import { filter } from 'rxjs/operators';
 
 
 const routes: Routes = [
@@ -21,7 +23,11 @@ const routes: Routes = [
 ]
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {useHash: true})],
+  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'top'})],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+ constructor(private viewportScroller: ViewportScroller) {
+ 
+ }
+ }

@@ -1,8 +1,7 @@
-<h1 mat-dialog-title>Hi</h1>
-<div mat-dialog-content *ngFor="let img of data">
-    <img src="../../assets/img/{{img}}" alt="{{img}}"/>
+
+<div mat-dialog-content>
+    <img src="../../assets/img/{{data}} " alt="{{data}}"/>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data.images" cdkFocusInitial>Ok</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Close</button>
 </div>

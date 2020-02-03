@@ -88,6 +88,10 @@ export class SelectCardComponent implements OnInit {
         });
     }/////end of onInit
 
+    onSelected(imgName: string) {
+        this.updateCardForm.patchValue({cardImg: imgName})
+    }
+
     clearForm() {
         this.updateCardForm.reset();
         this.card.cardImg = '';

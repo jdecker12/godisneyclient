@@ -3,6 +3,7 @@ import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import { DataService } from '../services/data.service';
 import { Router } from '@angular/router';
 import { Card } from '../models/card';
+import { ViewportScroller } from '@angular/common';
 
 const SMALL_WIDTH_BREAKPOINT = 720;
 
@@ -26,7 +27,7 @@ export class SideNavComponent implements OnInit {
     and (-webkit-device-pixel-ratio : 3)`);
         
 
-    constructor(private zone: NgZone, private breakpointObserver: BreakpointObserver, private data: DataService, private router: Router) {
+    constructor(private zone: NgZone, private breakpointObserver: BreakpointObserver, private data: DataService, private router: Router, private viewportScroller: ViewportScroller) {
         this.mediaMatcher.addListener(mql => 
             zone.run(() => this.mediaMatcher = matchMedia(`(max-width: ${SMALL_WIDTH_BREAKPOINT}px)`)));
 

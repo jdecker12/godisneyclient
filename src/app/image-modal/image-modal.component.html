@@ -1,7 +1,8 @@
-<div class="img-list">
-    <ul *ngFor="let image of images">
-        <li>
-          <button mat-raised-button (click)="openDialog()">{{image}}</button>
-        </li>
-    </ul>
-</div>
+<mat-form-field>
+  <mat-label>Select image here to view</mat-label>
+  <mat-select [formControl]="myselect">
+    <mat-option *ngFor="let img of images" [value]="img" (click)="openDialog()">
+     Name:  {{ img }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
