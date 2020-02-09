@@ -46,8 +46,8 @@ export class LoginComponent implements OnInit {
     ngOnInit() {
        this.dec();
         if (this.uName !== undefined) {
-            this.creds.username = this.uName;
-            this.creds.password = this.uPass;
+            this.creds.username = atob(this.uName);
+            this.creds.password = atob(this.uPass);
             this.checked = true;
         }
     }

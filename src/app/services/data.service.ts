@@ -83,6 +83,11 @@ export class DataService {
     }
 
     public login(creds): Observable<boolean> {
+        /// encrypt the request payload so user creds not visible to hackers and nefarious types
+        let uName: string = btoa(creds.username);
+        let uPass: string = btoa(creds.password);
+        creds.username = uName;
+        creds.password = uPass;
         return this.http.post("/api/Auth/CreateToken", creds)
             .pipe(
                 map((data: any) => {

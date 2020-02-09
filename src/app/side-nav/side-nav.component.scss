@@ -128,7 +128,7 @@
     width: 350px;
     // background-color: #673ab7;
     padding: 0 1rem;
-    z-index: -1;
+    z-index: 0;
     .mat-card {
         border-bottom: 1px solid $d-dark;
         border-radius: 4px;
@@ -139,6 +139,11 @@
     .weather-app {
         width: 100%;
         margin-top: 3.5rem;
+    }
+    #youtube-video {
+        margin-top: 3.5rem;
+        width: 350px;
+        height: 215px;
     }
 }
 

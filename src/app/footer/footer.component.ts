@@ -20,11 +20,6 @@ export class FooterComponent implements OnInit {
     public privacy: any;
     public terms: any;
 
-
-    sayHello(): void {
-        alert('Hello');
-    }
-
     ngOnInit() {
         this.card$ = this.data.loadCardsByCategory('Main');
         this.privacy = document.getElementById('privacy');

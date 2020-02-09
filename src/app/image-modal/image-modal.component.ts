@@ -64,8 +64,6 @@ export class DialogOverviewExampleDialog {
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: Images) {}
 
-
-
   onNoClick(): void {
     this.dialogRef.close(this.data);
   }

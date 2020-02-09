@@ -31,7 +31,7 @@
 
     .toolbar-font {
         font-family: 'Nothing You Could Do', cursive;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
         display: flex;
         justify-content: space-around;
         margin-left: 5%;
@@ -78,7 +78,7 @@
             margin-left: 20%;
         }
 
-        #goofy-icon, .toolbar-font, .shield-icon {
+        #goofy-icon, .shield-icon {
             display: none;
         }
     }

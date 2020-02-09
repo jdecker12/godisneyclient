@@ -8,12 +8,11 @@
         <mat-card-content *ngFor="let p of c.cardContents">
             <div>
                 <p>{{p.paraOne}}</p>
-                <p>{{p.paraTwo}}</p>
             </div>
             <a href="https://{{c.cardLink}}" target="_blank">{{c.cardLinkName}}</a>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-fab [routerLink]="['/', c.cardTitle]"><mat-icon>add</mat-icon><span></span></button>
+        <button mat-fab [routerLink]="['/', c.cardTitle]"><mat-icon>add</mat-icon><span></span></button>
         </mat-card-actions>
     </mat-card>
 </div>
