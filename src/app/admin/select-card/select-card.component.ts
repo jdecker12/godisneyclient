@@ -31,6 +31,7 @@ export class SelectCardComponent implements OnInit {
     cardTitle: FormControl;
     cardIcon: FormControl;
     cardImg: FormControl;
+    cardImg3: FormControl;
     cardLinkName: FormControl;
     paraOne: FormControl;
     paraTwo: FormControl;
@@ -63,6 +64,7 @@ export class SelectCardComponent implements OnInit {
         let cardCategory = new FormControl('Main');
         let cardIcon = new FormControl('');
         let cardImg = new FormControl('');
+        let cardImg3 = new FormControl('');
         let cardLink = new FormControl('');
         let cardLinkName = new FormControl('');
         let paraOne = new FormControl('');
@@ -76,6 +78,7 @@ export class SelectCardComponent implements OnInit {
             cardCategory: cardCategory,
             cardIcon: cardIcon,
             cardImg: cardImg,
+            cardImg3: cardImg3,
             cardLink: cardLink,
             cardLinkName: cardLinkName,
             cardContents: new FormGroup({
@@ -88,8 +91,13 @@ export class SelectCardComponent implements OnInit {
         });
     }/////end of onInit
 
-    onSelected(imgName: string) {
-        this.updateCardForm.patchValue({cardImg: imgName})
+    onSelected(imgName: string[]) {
+        if(imgName[1] === '1') {
+            this.updateCardForm.patchValue({cardImg: imgName[0]})
+        }else {
+            this.updateCardForm.patchValue({cardImg3: imgName[0]})
+        }
+        
     }
 
     clearForm() {
@@ -159,6 +167,7 @@ export class SelectCardComponent implements OnInit {
                     this.cardCategory = new FormControl(this.card.cardCategory);
                     this.cardIcon = new FormControl(this.card.cardIcon);
                     this.cardImg = new FormControl(this.card.cardImg);
+                    this.cardImg3 = new FormControl(this.card.cardImg3);
                     this.cardLink = new FormControl(this.card.cardLink);
                     this.cardLinkName = new FormControl(this.card.cardLinkName);
                     this.paraOne = new FormControl(shortHand.paraOne);
@@ -172,6 +181,7 @@ export class SelectCardComponent implements OnInit {
                         cardCategory: this.cardCategory,
                         cardIcon: this.cardIcon,
                         cardImg: this.cardImg,
+                        cardImg3: this.cardImg3,
                         cardLink: this.cardLink,
                         cardLinkName: this.cardLinkName,
                         cardContents: new FormGroup({

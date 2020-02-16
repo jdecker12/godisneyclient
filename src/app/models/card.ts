@@ -13,6 +13,7 @@ export class Card {
     cardCategory?: any;
     cardTitle: string;
     cardImg: string;
+    cardImg3: string;
     cardLink: string;
     cardLinkName: string;
     cardIcon: string;

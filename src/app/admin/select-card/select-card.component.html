@@ -47,14 +47,18 @@
                 <div class="example-container">
                     <div *ngIf="selected">
                         <div class="form-image"><img mat-card-image src="../../assets/img/{{card.cardImg}}.jpg"></div>
-                        <!--<div *ngFor="let card of cards">
-                <mat-list-item>
-                    <a>{{card.cardImg}}</a>
-                </mat-list-item>
-            </div>-->
                     </div>
                     <mat-form-field>
                         <input matInput placeholder="Card Image" name="cardImg" formControlName="cardImg" id="cardImg" required>
+                    </mat-form-field>
+                </div>
+
+                <div class="example-container">
+                    <div *ngIf="selected">
+                        <div class="form-image"><img mat-card-image src="../../assets/img/{{card.cardImg3}}.jpg"></div>
+                    </div>
+                    <mat-form-field>
+                        <input matInput placeholder="Secondary Image" name="cardImg3" formControlName="cardImg3" id="cardImg3">
                     </mat-form-field>
                 </div>
 

@@ -127,6 +127,11 @@ html, body {
         text-decoration: none;
     }
 
+    .mat-card-actions {
+        position: relative;
+        margin-top: 50px;
+    }
+
     .admin.mat-list-base .mat-list-item .mat-list-item-content, .admin.mat-list-base .mat-list-option .mat-list-item-content {
         display: flex;
         flex-direction: row;

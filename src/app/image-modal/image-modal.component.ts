@@ -1,9 +1,10 @@
 import { Component, OnInit, Inject, Input, Output, EventEmitter } from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, FormGroup, FormBuilder} from '@angular/forms';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 export interface Images {
-  images: string;
+  images: string,
+  location:string
 }
 @Component({
   selector: 'app-image-modal',
@@ -13,12 +14,15 @@ export interface Images {
 export class ImageModalComponent implements OnInit {
  
   @Input() images = [];
-  @Output() selectImg = new EventEmitter<string>()
+  @Output() selectImg = new EventEmitter<string[]>();
+ 
  
   constructor(public dialog: MatDialog) {}
   myselect = new FormControl();
   img: string;
   selectedImg: string;
+  myLocation: string;
+  myData: any;
 
   getSelValue() : string {
     this.selectedImg = this.myselect.value;
@@ -31,25 +35,23 @@ export class ImageModalComponent implements OnInit {
     this.getSelValue();
    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
     width: '50%',
-    data: this.selectedImg
+    data: {images: this.selectedImg, location: ''}
   });
 
   dialogRef.afterClosed().subscribe(result => {
-    let nameArr = Array.from(this.selectedImg);
+    let img = result[0];
+    let selInput = result[1];
+    let nameArr = Array.from(img);
     let count = nameArr.indexOf('.');
     let truncName = nameArr.splice(0, count);
     let imgName = truncName.join("");
-  
-    console.log(imgName);
-    this.selectImg.emit(imgName);
-    
+    this.selectImg.emit([imgName, selInput]);
   });
 
   }
 
 
   ngOnInit() {
-   console.log(this.images);
   }
 
 }
@@ -59,13 +61,30 @@ export class ImageModalComponent implements OnInit {
   selector: 'dialog-overview-example-dialog',
   templateUrl: 'dialog-overview-example-dialog.html',
 })
-export class DialogOverviewExampleDialog {
+export class DialogOverviewExampleDialog implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: Images) {}
+    @Inject(MAT_DIALOG_DATA) public data: Images, private _formBuilder: FormBuilder) {}
+
+    isChecked: boolean;
+    selectImageForm: FormGroup;
+
+
+    
+    getRadioVal(): string {
+      this.data.location = this.selectImageForm.get('selectImageRadioGroup').value;
+      return this.data.location;
+  }
+
 
   onNoClick(): void {
-    this.dialogRef.close(this.data);
+    this.dialogRef.close();
+  }
+
+  ngOnInit() {
+    this.selectImageForm = this._formBuilder.group({
+      selectImageRadioGroup: [('1')]
+    })
   }
 
 }
